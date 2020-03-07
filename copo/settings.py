@@ -25,7 +25,7 @@ SECRET_KEY = '(!3ld5esy=hoh7=fdew66bki1z_szd*a1+w#96kfc+sp64b-ik'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'data',
     'accounts',
 ]
 
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'copo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,6 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'stats'),
+)
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, "media")
