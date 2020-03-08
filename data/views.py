@@ -6,12 +6,12 @@ from . import forms
 
 def list(request):
     articles=Copo.objects.all()
-    return render(request ,"songs/list.html",{"articles":articles})
+    return render(request ,"data/list.html",{"articles":articles})
     
 def article(request,slug):
     #return HttpResponse(slug)
     song=Copo.objects.get(slug=slug)
-    return render(request ,"songs/lyric.html",{"song":song})
+    return render(request ,"data/datas.html",{"song":song})
 
 @login_required(login_url="/accounts/login/")
 def create_data(request):
@@ -24,5 +24,5 @@ def create_data(request):
             inst.save()
             return redirect('data:good')
     else:
-        form =forms.CreateSongs()
-    return render(request,"songs/create.html",{'form':form})
+        form =forms.Createdata()
+    return render(request,"data/create.html",{'form':form})
