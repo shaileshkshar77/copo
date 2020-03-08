@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Copo
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from . import forms
+
 
 # Create your views here.
 def homepage(request):
@@ -21,7 +26,7 @@ def signup_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('accounts:home')
+                return redirect('accounts:good')
     else:
         form=UserCreationForm()
     return render(request,'accounts/signup.html',{'form':form})
@@ -33,7 +38,7 @@ def login_view(request):
             #login
             user=form.get_user()
             login(request,user)
-            return redirect('accounts:home')
+            return redirect('accounts:good')
     else:
         form=AuthenticationForm()
     return render(request,'accounts/login.html',{'form':form})
@@ -41,4 +46,28 @@ def login_view(request):
 def logout_view(request):
     if request.method=='POST':
         logout(request)
-        return redirect('accounts:home')
+        return redirect('accounts:good')
+
+def list(request):
+    articles=Copo.objects.all()
+    return render(request ,"accounts/list.html",{"articles":articles})
+    
+def article(request,slug):
+    #return HttpResponse(slug)
+    song=Copo.objects.get(slug=slug)
+    return render(request ,"accounts/datas.html",{"song":song})
+
+@login_required(login_url="/accounts/login/")
+def create_data(request):
+    if request.method =='POST':
+        form=forms.Createdata(request.POST,request.FILES)
+        if form.is_valid():
+            #save database
+            inst=form.save(commit=False)
+            inst.author=request.user
+            inst.save()
+            return redirect('accounts:good')
+    else:
+        form =forms.Createdata()
+    return render(request,"accounts/create.html",{'form':form})
+
