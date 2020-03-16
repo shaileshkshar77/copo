@@ -5,5 +5,6 @@ from . import views
 
 app_name='data'
 urlpatterns = [
-
+    path('',views.list,name="good"),
+    path('getmarks/',views.marks,name="create"),
 ]
