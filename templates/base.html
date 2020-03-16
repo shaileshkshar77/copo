@@ -20,6 +20,7 @@
                 </form>
             </li>
             <li><a href="{% url 'accounts:create' %}">Create</a></li>
+            <li><a href="{% url 'data:create' %}">Enter_marks</a></li>
             {% else %}
             <li><a href="{% url 'accounts:login' %}">Login</a></li>
             <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
