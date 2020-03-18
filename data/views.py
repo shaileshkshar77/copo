@@ -23,3 +23,30 @@ def marks(request):
     else:
         form =forms.Marks_form()
     return render(request,"data/create.html",{'form':form})
+
+@login_required(login_url="/accounts/login/")
+def course(request):
+    if request.method =='POST':
+        form=forms.Marks_Courses(request.POST,request.FILES)
+        if form.is_valid():
+            #save database
+            inst=form.save(commit=False)
+            inst.author=request.user
+            inst.save()
+            return redirect('data:good')
+    else:
+        form =forms.Marks_Courses()
+    return render(request,"data/courses.html",{'form':form})
+@login_required(login_url="/accounts/login/")
+def student(request):
+    if request.method =='POST':
+        form=forms.Marks_Info(request.POST,request.FILES)
+        if form.is_valid():
+            #save database
+            inst=form.save(commit=False)
+            inst.author=request.user
+            inst.save()
+            return redirect('data:good')
+    else:
+        form =forms.Marks_Info()
+    return render(request,"data/info.html",{'form':form})

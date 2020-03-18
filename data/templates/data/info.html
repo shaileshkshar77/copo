@@ -5,7 +5,7 @@
     <h2>
     Enter
     </h2>
-    <form class='site-form' action='{% url "data:create" %}' method='post' enctype='multipart/form-data'>
+    <form class='site-form' action='{% url "data:students" %}' method='post' enctype='multipart/form-data'>
     {% csrf_token %}
     {{form}}
     <input type ="submit" value="Create">

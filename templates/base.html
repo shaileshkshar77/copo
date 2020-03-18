@@ -20,6 +20,8 @@
                 </form>
             </li>
             <li><a href="{% url 'data:create' %}">Enter_marks</a></li>
+            <li><a href="{% url 'data:students' %}">Enter Student Data</a></li>
+            <li><a href="{% url 'data:courses' %}">Enter Courses</a></li>
             {% else %}
             <li><a href="{% url 'accounts:login' %}">Login</a></li>
             <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
