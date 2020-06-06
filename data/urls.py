@@ -9,4 +9,5 @@ urlpatterns = [
     path('getmarks/',views.marks,name="create"),
     path('students/',views.student,name="students"),
     path('courses/',views.course,name="courses"),
+    path('tables/',views.tab,name="tab"),
 ]

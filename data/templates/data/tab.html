@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+
+    {% for item in f %}
+    <tr> 
+         <td>{{ item.Co1 }}</td>
+         <td>{{ item.Co2 }}</td>
+         <td>{{ item.Co3 }}</td>
+         <td>{{ item.Co4 }}</td>
+    </tr>
+       {% endfor %}
+
+    {% endblock content %}

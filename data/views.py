@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Marks
+from .models import Co
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from . import forms
@@ -50,3 +51,8 @@ def student(request):
     else:
         form =forms.Marks_Info()
     return render(request,"data/info.html",{'form':form})
+
+@login_required(login_url="/accounts/login/")
+def tab(request):
+    f=Co.objects.all()
+    return render(request,"data/tab.html",{'f':f})

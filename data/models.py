@@ -49,10 +49,9 @@ class Marks(models.Model):
     #add picture
 
     def __str__(self):
-        return self.name
+        return self.usn
 
 class Max_Marks(models.Model):
-    usn=models.ForeignKey(Info,on_delete=models.CASCADE)
     course_code=models.ForeignKey(Courses,on_delete=models.CASCADE)
     Co1_cie1=models.IntegerField()
     Co2_cie1=models.IntegerField()
@@ -85,4 +84,35 @@ class Max_Marks(models.Model):
     #add picture
 
     def __str__(self):
-        return self.name
+        return self.course_code
+    
+class Sum(models.Model):
+    course_code=models.ForeignKey(Courses,on_delete=models.CASCADE)
+    Co1=models.IntegerField()
+    Co2=models.IntegerField()
+    Co3=models.IntegerField()
+    Co4=models.IntegerField()
+
+    def __str__(self):
+        return self.course_code
+
+class Max_Sum(models.Model):
+    course_code=models.ForeignKey(Courses,on_delete=models.CASCADE)
+    Co1=models.IntegerField()
+    Co2=models.IntegerField()
+    Co3=models.IntegerField()
+    Co4=models.IntegerField()
+
+    def __str__(self):
+        return self.course_code
+
+class Co(models.Model):
+    course_code=models.ForeignKey(Courses,on_delete=models.CASCADE)
+    Co1=models.IntegerField()
+    Co2=models.IntegerField()
+    Co3=models.IntegerField()
+    Co4=models.IntegerField()
+
+    def __str__(self):
+        return self.course_code
+
